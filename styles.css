@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  padding: 20px 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 4px;
+  background-color: #ebebeb;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 900;
+  font-size: 40px;
+  color: rgb(86, 43, 226);
+}
+
+.add_new_todo {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.input_container {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.input_container > label {
+  display: block;
+}
+
+.input_container input {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.input_container p {
+  margin-bottom: 5px;
+}
+.input_container > label:first-child {
+  margin-bottom: 15px;
+}
+
+.add_new_todo > button {
+  padding: 10px;
+}
+
+ul h2 {
+  font-size: 20px;
+}
+
+ul > li {
+  box-shadow: 0px 0px 4px 4px #00000069;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+ul > li:last-child {
+  margin: 0;
+}
+
+ul p {
+  color: #4c8d5e;
+}
+
+ul div {
+  text-align: center;
+}
+
+.test > input {
+  padding: 0;
+  margin: 0;
+  border-width: 0;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  opacity: 0;
+}
+
+.test span {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background: gray;
+  border-radius: 5px;
+  border: 2px solid black;
+  position: relative;
+}
+.test span:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: white;
+}
+
+.test input:checked + span {
+  background: #30c52b;
+}
+
+.test input:checked + span:before {
+  background: #ed0303;
+}
+
+ul li.finished_item {
+  background-color: #c0fdc0;
+}
+
+ul li.finished_item > h2 {
+  color: gray;
+}
