@@ -17,11 +17,11 @@
       <form class="add_new_todo">
         <div class="input_container">
           <label>
-            <p>Title</p>
+            Title
             <input id="headline_text" type="text" placeholder="TODO Title" />
           </label>
           <label>
-            <p>Text</p>
+            Text
             <input id="todo_body" type="text" placeholder="Any text" />
           </label>
         </div>
@@ -57,6 +57,21 @@
           <p></p>
         </li>
       </ul>
+      <div class="modal_wrapper">
+        <form class="modal" id="modal">
+          <!-- <h2>Edit TODO</h2> -->
+          <label>
+            Title
+            <input id="edit_headline" type="text" placeholder="TODO Title" />
+          </label>
+          <label>
+            Text
+            <input id="edit_todo" type="text" placeholder="Any text" />
+          </label>
+          <button type="submit">Save</button>
+          <button type="button">Cancel</button>
+        </form>
+      </div>
     </main>
   </body>
   <script src="./script.js"></script>

@@ -10,6 +10,7 @@ const headlineText = document.getElementById('headline_text');
 const todoBody = document.getElementById('todo_body');
 const addNewTodoButton = document.getElementById('add_new_todo');
 const todoList = document.getElementById('todo_list');
+const modal = document.getElementById('modal');
 
 addNewTodoButton.addEventListener('click', () => {
   const headlineTodo = headlineText.value || 'Title';
@@ -54,21 +55,26 @@ const addDate = () => {
     hour: 'numeric',
     minute: 'numeric'
   };
-
   return new Date(date).toLocaleDateString('en-US', options);
 };
 
 function addButtonListener(item) {
-  const finishButton = item.querySelector('.finish_button');
+  const doneButton = item.querySelector('.finish_button');
   const deleteButton = item.querySelector('.delete_button');
+  const editButton = item.querySelector('.editbutton');
 
   const deleteButtonHandler = () => {
-    finishButton.removeEventListener('click', changeStatusHandler);
+    doneButton.removeEventListener('click', changeStatusHandler);
     deleteButton.removeEventListener('click', deleteButtonHandler);
     item.remove();
   };
+
+  const editButtonHandler = () => {
+    modal.style.display = block;
+  };
+
   const changeStatusHandler = () => {
-    if (finishButton.checked) {
+    if (doneButton.checked) {
       item.classList.add('finished_item');
     } else {
       item.classList.remove('finished_item');
@@ -76,7 +82,9 @@ function addButtonListener(item) {
   };
   deleteButton.addEventListener('click', deleteButtonHandler);
 
-  finishButton.addEventListener('change', changeStatusHandler);
+  editButton.addEventListener('click', editButtonHandler);
+
+  doneButton.addEventListener('change', changeStatusHandler);
 }
 
 const itemsToDo = Array.from(document.querySelectorAll('li'));

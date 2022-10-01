@@ -167,17 +167,21 @@ h1 {
   display: block;
 }
 
-.input_container input {
+.input_container input,
+.modal_wrapper form input {
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
 }
-.input_container p {
-  margin-bottom: 5px;
+.input_container input,
+.modal_wrapper .modal input {
+  margin-top: 5px;
 }
-.input_container > label:first-child {
-  margin-bottom: 15px;
+
+.input_container > label:first-child,
+.modal > label {
+  margin-bottom: 20px;
 }
 
 .add_new_todo > button {
@@ -346,4 +350,32 @@ ul li.finished_item > p {
 .edit_wrapper .edit_button:hover {
   background: var(--main_color);
   color: white;
+}
+
+/* modal styles */
+.modal_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #262032dd;
+}
+
+.modal_wrapper h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--main_color);
+  margin-bottom: 20px;
+}
+
+.modal_wrapper form {
+  background-color: white;
+  width: 600px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
