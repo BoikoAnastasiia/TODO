@@ -362,6 +362,17 @@ ul li.finished_item > p {
   background-color: #262032dd;
 }
 
+.modal:after {
+  content: '\2715';
+  font-size: 20px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: crimson;
+  padding: 15px;
+  cursor: pointer;
+}
+
 .modal_wrapper h2 {
   text-align: center;
   font-weight: 700;
@@ -373,7 +384,7 @@ ul li.finished_item > p {
 .modal_wrapper form {
   background-color: white;
   width: 600px;
-  padding: 20px;
+  padding: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -384,16 +395,26 @@ ul li.finished_item > p {
   margin-bottom: 30px;
 }
 
-.save,
-.cancel {
-  padding: 10px 15px;
-  display: block;
-}
-
 .save {
-  margin-left: auto;
+  margin: auto;
+  padding: 10px 25px;
+  display: block;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid var(--main_color);
+  transition: 500ms;
+  font-size: 18px;
+  font-family: 'Open Sans', serif;
+  font-weight: 300;
 }
 
-.cancel {
-  margin-right: auto;
+.save:hover {
+  background: var(--main_color);
+  color: white;
+}
+
+input:focus {
+  outline: var(--main_color) 1px solid;
+  border-radius: 3px;
+  border: 1px solid transparent;
 }
