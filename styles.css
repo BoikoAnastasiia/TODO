@@ -163,7 +163,7 @@ h1 {
   margin-right: 15px;
 }
 
-.input_container > label {
+label {
   display: block;
 }
 
@@ -181,7 +181,7 @@ h1 {
 
 .input_container > label:first-child,
 .modal > label {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .add_new_todo > button {
@@ -378,4 +378,22 @@ ul li.finished_item > p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.modal label:nth-child(3) {
+  margin-bottom: 30px;
+}
+
+.save,
+.cancel {
+  padding: 10px 15px;
+  display: block;
+}
+
+.save {
+  margin-left: auto;
+}
+
+.cancel {
+  margin-right: auto;
 }
