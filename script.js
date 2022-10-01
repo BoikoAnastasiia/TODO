@@ -12,18 +12,18 @@ const addNewTodoButton = document.getElementById('add_new_todo');
 const todoList = document.getElementById('todo_list');
 
 addNewTodoButton.addEventListener('click', () => {
-  const headlineTodo = headlineText.value;
+  const headlineTodo = headlineText.value || 'Title';
   const bodyTodo = todoBody.value;
-  if (headlineTodo != '' && bodyTodo != '') {
+  if (bodyTodo != '') {
     addNewToDo(headlineTodo, bodyTodo);
     headlineText.value = '';
     todoBody.value = '';
   } else {
-    alert('some input is empty');
+    alert('Add some TODO text first');
   }
 });
 
-function addNewToDo(headline, todoText) {
+function addNewToDo(headline, todoText, date) {
   const newItem = document.createElement('li');
   newItem.innerHTML = `
     <h2>${headline}</h2>
@@ -37,6 +37,7 @@ function addNewToDo(headline, todoText) {
           delete
         </button>
     </div>
+    <p class="date"> ${Date.now()} </p>
   `;
   todoList.appendChild(newItem);
   addButtonListener(newItem);

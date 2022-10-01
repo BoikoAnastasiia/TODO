@@ -87,6 +87,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  transition: all 0.5s;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -148,7 +149,7 @@ h1 {
 
 .add_new_todo {
   display: flex;
-  margin-bottom: 15px;
+  margin: 50px 0;
   align-items: center;
 }
 
@@ -162,6 +163,7 @@ h1 {
 }
 
 .input_container input {
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -174,17 +176,50 @@ h1 {
 }
 
 .add_new_todo > button {
-  padding: 10px;
+  margin-left: auto;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 98, 158, 1) 0%,
+    rgba(255, 0, 63, 1) 35%
+  );
+  color: white;
+  font-size: 30px;
+  border: none;
+  font-family: 'Open Sans';
+  font-weight: 500;
+}
+
+.add_new_todo > button:hover {
+  background: radial-gradient(
+    circle,
+    rgba(40, 0, 255, 1) 58%,
+    rgba(255, 98, 158, 1) 100%
+  );
+}
+
+hr {
+  margin-bottom: 40px;
 }
 
 ul h2 {
   font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 ul > li {
-  box-shadow: 0px 0px 4px 4px #00000069;
+  background-color: white;
   margin-bottom: 15px;
-  padding: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+ul > li:hover {
+  box-shadow: 11px 10px 44px -22px rgba(0, 0, 0, 0.75);
+  padding: 20px;
 }
 
 ul > li:last-child {
@@ -192,11 +227,20 @@ ul > li:last-child {
 }
 
 ul p {
-  color: #4c8d5e;
+  color: #262032;
 }
 
 ul div {
   text-align: center;
+}
+
+.date {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  color: rgb(74, 61, 224);
+  font-weight: 200;
 }
 
 .test > input {

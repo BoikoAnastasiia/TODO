@@ -14,19 +14,20 @@
   <body>
     <main>
       <h1>TODO</h1>
-      <div class="add_new_todo">
+      <form class="add_new_todo">
         <div class="input_container">
           <label>
-            <p>Headline ToDo</p>
-            <input id="headline_text" type="text" placeholder="Headline ToDo" />
+            <p>Title</p>
+            <input id="headline_text" type="text" placeholder="TODO Title" />
           </label>
           <label>
-            <p>ToDo</p>
-            <input id="todo_body" type="text" placeholder="ToDo" />
+            <p>Text</p>
+            <input id="todo_body" type="text" placeholder="Any text" />
           </label>
         </div>
-        <button type="button" id="add_new_todo">add</button>
-      </div>
+        <button type="button" id="add_new_todo">+</button>
+      </form>
+      <hr />
       <ul id="todo_list">
         <li>
           <h2>morning</h2>
@@ -49,6 +50,8 @@
             </label>
             <button type="button" class="delete_button">delete</button>
           </div>
+          <p class="date">October 23, 2022</p>
+          <p></p>
         </li>
       </ul>
     </main>
