@@ -23,25 +23,40 @@ addNewTodoButton.addEventListener('click', () => {
   }
 });
 
-function addNewToDo(headline, todoText, date) {
+function addNewToDo(headline, todoText) {
   const newItem = document.createElement('li');
   newItem.innerHTML = `
     <h2>${headline}</h2>
     <p>${todoText}</p>
-    <div>
+    <div class="edit_wrapper">
       <label class="test">
           <input type="checkbox" class="finish_button">
           <span></span>
         </label>
+        <button type="button" class="edit_button">&#9998;</button>
       <button type="button" class="delete_button">
-          delete
+          &#8212;
         </button>
     </div>
-    <p class="date"> ${Date.now()} </p>
+    <p class="date"> ${addDate()} </p>
   `;
   todoList.appendChild(newItem);
   addButtonListener(newItem);
 }
+
+const addDate = () => {
+  const date = Date.now();
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric'
+  };
+
+  return new Date(date).toLocaleDateString('en-US', options);
+};
 
 function addButtonListener(item) {
   const finishButton = item.querySelector('.finish_button');

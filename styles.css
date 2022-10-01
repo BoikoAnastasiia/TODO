@@ -127,6 +127,11 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --main_color: rgb(86, 43, 226);
+  --main_accent: rgb(190, 179, 226);
+}
+
 body {
   padding: 20px 0;
 }
@@ -144,7 +149,7 @@ h1 {
   margin-bottom: 15px;
   font-weight: 900;
   font-size: 40px;
-  color: rgb(86, 43, 226);
+  color: var(--main_color);
 }
 
 .add_new_todo {
@@ -194,7 +199,7 @@ h1 {
 .add_new_todo > button:hover {
   background: radial-gradient(
     circle,
-    rgba(40, 0, 255, 1) 58%,
+    var(--main_color) 58%,
     rgba(255, 98, 158, 1) 100%
   );
 }
@@ -224,6 +229,7 @@ ul > li:hover {
 
 ul > li:last-child {
   margin: 0;
+  overflow: hidden;
 }
 
 ul p {
@@ -239,8 +245,18 @@ ul div {
   bottom: 10px;
   right: 10px;
   font-size: 12px;
-  color: rgb(74, 61, 224);
+  color: var(--main_color);
   font-weight: 200;
+}
+
+.edit_wrapper {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .test > input {
@@ -254,13 +270,20 @@ ul div {
 }
 
 .test span {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: inline-block;
-  background: gray;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 40%,
+    rgb(219, 218, 218) 100%
+  );
   border-radius: 5px;
-  border: 2px solid black;
+  border: 1px solid var(--main_color);
   position: relative;
+}
+.test span:hover {
+  background: var(--main_color);
 }
 .test span:before {
   content: '';
@@ -269,23 +292,58 @@ ul div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 5px;
-  height: 5px;
-  background: white;
 }
 
 .test input:checked + span {
-  background: #30c52b;
+  background: var(--main_accent);
 }
 
 .test input:checked + span:before {
-  background: #ed0303;
+  font-size: 18px;
+  content: '\2714';
+  color: white;
+}
+
+.test input:checked + span {
+  border: white 1px solid;
 }
 
 ul li.finished_item {
-  background-color: #c0fdc0;
+  background-color: var(--main_accent);
 }
 
-ul li.finished_item > h2 {
-  color: gray;
+ul li.finished_item > h2,
+ul li.finished_item > p {
+  color: white;
+}
+
+.edit_wrapper button {
+  width: 27px;
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 0, 63, 1);
+  color: rgba(255, 0, 63, 1);
+  font-weight: 600;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 40%,
+    rgb(219, 218, 218) 100%
+  );
+}
+
+.edit_wrapper .delete_button:hover {
+  background: rgba(255, 0, 63, 1);
+  color: white;
+}
+
+.edit_wrapper .edit_button {
+  border: 1px solid var(--main_color);
+  color: var(--main_color);
+  font-weight: 600;
+  transform: scale(-1, 1);
+}
+
+.edit_wrapper .edit_button:hover {
+  background: var(--main_color);
+  color: white;
 }
