@@ -57,16 +57,26 @@
           <p></p>
         </li>
       </ul>
-      <div class="modal_wrapper">
+      <div class="modal_wrapper" id="modal_wrapper">
         <form class="modal" id="modal">
           <h2>Edit TODO</h2>
           <label>
             Title
-            <input id="edit_headline" type="text" placeholder="TODO Title" />
+            <input
+              id="edit_title"
+              type="text"
+              name="editTitle"
+              placeholder="TODO Title"
+            />
           </label>
           <label>
             Text
-            <input id="edit_todo" type="text" placeholder="Any text" />
+            <input
+              id="edit_todo"
+              name="editTodoText"
+              type="text"
+              placeholder="Any text"
+            />
           </label>
           <button type="submit" id="save" class="save">Save</button>
         </form>
