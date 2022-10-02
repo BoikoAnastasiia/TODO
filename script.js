@@ -45,14 +45,6 @@ function addNewToDo(headline, todoText) {
   `;
   todoList.appendChild(newItem);
   addButtonListener(newItem);
-
-  let todosInLs =
-    localStorage.getItem('todoList') == null
-      ? []
-      : JSON.parse.localStorage.getItem('todoList');
-  const todo = `{id: ${newItem.id}, headline: ${headline}, todoText: ${todoText}}`;
-  todosInLs.push(todo);
-  localStorage.setItem('todoList', JSON.stringify(todosInLs));
 }
 
 const addDate = () => {
@@ -73,10 +65,14 @@ function addButtonListener(item) {
   const deleteButton = item.querySelector('.delete_button');
   const editButton = item.querySelector('.edit_button');
 
-  const deleteButtonHandler = () => {
-    doneButton.removeEventListener('click', changeStatusHandler);
-    deleteButton.removeEventListener('click', deleteButtonHandler);
-    item.remove();
+  const buttonHandler = e => {
+    if (e.target == deleteButton) {
+      item.remove();
+    }
+    if (e.target == editButton) {
+      modal.style.display = 'block';
+      form.dataset.id = item.id;
+    }
   };
 
   const changeStatusHandler = () => {
@@ -87,8 +83,7 @@ function addButtonListener(item) {
     }
   };
 
-  deleteButton.addEventListener('click', deleteButtonHandler);
-  editButton.addEventListener('click', editButtonHandler);
+  item.addEventListener('click', buttonHandler);
   doneButton.addEventListener('change', changeStatusHandler);
 }
 
@@ -99,13 +94,12 @@ const hideModal = e => {
   ) {
     modal.style.display = 'none';
   }
-  console.log(e.currentTarget);
 };
 
 modal.addEventListener('click', hideModal);
 
-const editButtonHandler = () => {
-  modal.style.display = 'block';
+const editButtonHandler = e => {
+  console.log(e.target);
 };
 
 const handleSubmit = event => {
