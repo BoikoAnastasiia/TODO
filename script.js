@@ -72,7 +72,15 @@ function addButtonListener(item) {
     }
     if (e.target == editButton) {
       modal.style.display = 'block';
+
       form.dataset.id = item.id;
+      const li = document.getElementById(`${form.dataset.id}`);
+      const TODOHeadline = li.querySelector('h2');
+      const TODOText = li.querySelector('p');
+      const editHeadlineInput = document.getElementById('edit_title');
+      const editTextInput = document.getElementById('edit_todo');
+      editHeadlineInput.value = TODOHeadline.innerHTML;
+      editTextInput.value = TODOText.innerHTML;
     }
   };
 
@@ -103,25 +111,17 @@ const editButtonHandler = e => {
 const handleSubmit = event => {
   event.preventDefault();
 
-  const datasetid = form.dataset.id;
-
-  const item = document.getElementById(`${datasetid}`);
-
-  const TODOHeadline = item.querySelector('h2');
-  const TODOText = item.querySelector('p');
-  const editHeadlineInput = document.getElementById('edit_title');
-  const editTextInput = document.getElementById('edit_todo');
-
-  editHeadlineInput.value = TODOHeadline.innerHTML;
-  editTextInput.value = TODOText.textContent;
-
   const {
     elements: { editTitle, editTodoText }
   } = event.currentTarget;
 
   TODOHeadline.innerHTML = editTitle.value;
-  TODOText.textContent = editTodoText.value;
+  TODOText.innerHTML = editTodoText.value;
+
+  console.dir(editTitle);
+
   modal.style.display = 'none';
+  event.currentTarget.reset();
 };
 
 form.addEventListener('submit', handleSubmit);
