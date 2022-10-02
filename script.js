@@ -104,11 +104,8 @@ const handleSubmit = event => {
   event.preventDefault();
 
   const datasetid = form.dataset.id;
-  const searchById = datasetId => {
-    itemsToDo.find(list => list.id == datasetId);
-  };
-  const item = searchById(datasetid);
-  console.log(datasetid);
+
+  const item = document.getElementById(`${datasetid}`);
 
   const TODOHeadline = item.querySelector('h2');
   const TODOText = item.querySelector('p');
