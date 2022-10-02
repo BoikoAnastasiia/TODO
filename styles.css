@@ -363,8 +363,7 @@ ul li.finished_item > p {
   display: none;
 }
 
-.modal:after {
-  content: '\2715';
+.close {
   font-size: 20px;
   position: absolute;
   top: 3px;

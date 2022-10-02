@@ -27,6 +27,7 @@ addNewTodoButton.addEventListener('click', () => {
 
 function addNewToDo(headline, todoText) {
   const newItem = document.createElement('li');
+  newItem.id = Math.floor(Math.random() * 100) + Date.now();
   newItem.innerHTML = `
     <h2>${headline}</h2>
     <p>${todoText}</p>
@@ -44,6 +45,14 @@ function addNewToDo(headline, todoText) {
   `;
   todoList.appendChild(newItem);
   addButtonListener(newItem);
+
+  let todosInLs =
+    localStorage.getItem('todoList') == null
+      ? []
+      : JSON.parse.localStorage.getItem('todoList');
+  const todo = `{id: ${newItem.id}, headline: ${headline}, todoText: ${todoText}}`;
+  todosInLs.push(todo);
+  localStorage.setItem('todoList', JSON.stringify(todosInLs));
 }
 
 const addDate = () => {
@@ -82,6 +91,18 @@ function addButtonListener(item) {
   editButton.addEventListener('click', editButtonHandler);
   doneButton.addEventListener('change', changeStatusHandler);
 }
+
+const hideModal = e => {
+  if (
+    e.currentTarget == modal ||
+    e.currentTarget == document.getElementById('close')
+  ) {
+    modal.style.display = 'none';
+  }
+  console.log(e.currentTarget);
+};
+
+modal.addEventListener('click', hideModal);
 
 const editButtonHandler = () => {
   modal.style.display = 'block';
