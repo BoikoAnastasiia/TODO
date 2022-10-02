@@ -12,6 +12,7 @@ const addNewTodoButton = document.getElementById('add_new_todo');
 const todoList = document.getElementById('todo_list');
 const modal = document.getElementById('modal_wrapper');
 const form = document.getElementById('modal');
+const itemsToDo = Array.from(document.querySelectorAll('li'));
 
 addNewTodoButton.addEventListener('click', () => {
   const headlineTodo = headlineText.value || 'Title';
@@ -88,10 +89,7 @@ function addButtonListener(item) {
 }
 
 const hideModal = e => {
-  if (
-    e.currentTarget == modal ||
-    e.currentTarget == document.getElementById('close')
-  ) {
+  if (e.target == modal || e.target == document.getElementById('close')) {
     modal.style.display = 'none';
   }
 };
@@ -103,13 +101,22 @@ const editButtonHandler = e => {
 };
 
 const handleSubmit = event => {
+  event.preventDefault();
+
+  const datasetid = form.dataset.id;
+  const searchById = datasetId => {
+    itemsToDo.find(list => list.id == datasetId);
+  };
+  const item = searchById(datasetid);
+  console.log(datasetid);
+
   const TODOHeadline = item.querySelector('h2');
   const TODOText = item.querySelector('p');
-  const editHeadline = document.getElementById('edit_title');
-  const editText = document.getElementById('edit_todo');
-  editHeadline.value = TODOHeadline.innerHTML;
-  editText.value = TODOText.textContent;
-  event.preventDefault();
+  const editHeadlineInput = document.getElementById('edit_title');
+  const editTextInput = document.getElementById('edit_todo');
+
+  editHeadlineInput.value = TODOHeadline.innerHTML;
+  editTextInput.value = TODOText.textContent;
 
   const {
     elements: { editTitle, editTodoText }
@@ -118,12 +125,9 @@ const handleSubmit = event => {
   TODOHeadline.innerHTML = editTitle.value;
   TODOText.textContent = editTodoText.value;
   modal.style.display = 'none';
-  event.currentTarget.reset();
 };
 
 form.addEventListener('submit', handleSubmit);
-
-const itemsToDo = Array.from(document.querySelectorAll('li'));
 
 itemsToDo.forEach(item => {
   addButtonListener(item);
