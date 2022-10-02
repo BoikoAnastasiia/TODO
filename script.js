@@ -1,11 +1,3 @@
-// сделать список планов на день
-// добовление задачи, (титулка, заголовок, дата завершение)
-// изменение статуса (активное, завершонное), ее можно завершить и вернуть из завершенных
-// удаление задачи
-// редактирование задачи
-
-// драг анд дроп, (изменение порядка задач)
-
 const headlineText = document.getElementById('headline_text');
 const todoBody = document.getElementById('todo_body');
 const addNewTodoButton = document.getElementById('add_new_todo');
@@ -104,21 +96,17 @@ const hideModal = e => {
 
 modal.addEventListener('click', hideModal);
 
-const editButtonHandler = e => {
-  console.log(e.target);
-};
-
 const handleSubmit = event => {
   event.preventDefault();
 
   const {
     elements: { editTitle, editTodoText }
   } = event.currentTarget;
-
+  const li = document.getElementById(`${form.dataset.id}`);
+  const TODOHeadline = li.querySelector('h2');
+  const TODOText = li.querySelector('p');
   TODOHeadline.innerHTML = editTitle.value;
   TODOText.innerHTML = editTodoText.value;
-
-  console.dir(editTitle);
 
   modal.style.display = 'none';
   event.currentTarget.reset();
